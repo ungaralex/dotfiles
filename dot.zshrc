@@ -4,7 +4,7 @@
 POWERLEVEL9K_MODE='awesome-patched'
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/tester/.oh-my-zsh
+export ZSH=/home/alex/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -62,7 +62,17 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  docker
+  git-extras
+  z
+  docker-compose
+  colored-man-pages
+  command-not-found
 )
+source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+
+# Source font maps
+source ~/.fonts/*.sh
 
 source $ZSH/oh-my-zsh.sh
 
@@ -97,39 +107,6 @@ source $ZSH/oh-my-zsh.sh
 
 # P9k config
 # Keep powerlevel9k in distinct file
-# === ZGEN stuff ===
-if [ !  -f ~/.zgen/zgen.zsh ]; then
-    echo "Zgen not found, bootstrapping."
-    mkdir -p ~/.zgen
-    curl -L https://raw.githubusercontent.com/tarjoilija/zgen/master/zgen.zsh > ~/.zgen/zgen.zsh
-fi
-
-source ~/.zgen/zgen.zsh
-if ! zgen saved; then
-    # Bootstrap fonts
-
-    # Load skwp theme, in case powerlevel9k doesn't work.
-    #zgen prezto prompt theme 'skwp'
-    #zgen prezto syntax-highlighting color 'yes'
-
-    # prezto and modules
-    zgen prezto
-
-    zgen prezto git
-    zgen prezto command-not-found
-    zgen prezto syntax-highlighting
-    zgen prezto history-substring-search
-    zgen prezto completion
-    zgen prezto fasd
-
-    zgen load tarruda/zsh-autosuggestions
-    if [[ ! $TERM =~ linux ]];
-    then
-        zgen load bhilburn/powerlevel9k powerlevel9k.zsh-theme
-    fi
-
-    prompt skwp
-fi
 
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon context time dir dir_writable)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status vcs ip battery docker_machine)
@@ -151,3 +128,4 @@ POWERLEVEL9K_TIME_FORMAT="%D{%F %T}"
 
 alias cl=clear
 alias fuckingdie=poweroff
+alias untargz="tar -xvzf"
