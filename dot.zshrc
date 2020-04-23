@@ -1,4 +1,3 @@
-# If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 POWERLEVEL9K_MODE='awesome-patched'
@@ -69,7 +68,7 @@ plugins=(
   colored-man-pages
   command-not-found
 )
-source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 # Source font maps
 source ~/.fonts/*.sh
@@ -129,3 +128,5 @@ POWERLEVEL9K_TIME_FORMAT="%D{%F %T}"
 alias cl=clear
 alias fuckingdie=poweroff
 alias untargz="tar -xvzf"
+alias gitprune=/opt/scripts/gitprune.sh
+
